@@ -1,6 +1,6 @@
+<h1>Ace Fit Facts</h1>
 <div class="feed-container">
-    @for (item of articlesList; track $index) {
-    <app-article #item></app-article>
-    }
-    </div>
-    
+  @for (item of articlesList; track $index) {
+  <app-article [article]=item></app-article>
+  }
+</div>

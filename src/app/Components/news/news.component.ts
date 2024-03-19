@@ -14,7 +14,11 @@ export class NewsComponent implements OnInit {
   articlesList: Article[] = [];
   constructor(private articlesFeedService: ArticlesFeedService) {}
 
-  ngOnInit(): void {
-    const rssFeedUrl = 'https://feeds.feedburner.com/AceFitFacts';
+  async ngOnInit(): Promise<void> {
+    let list = await this.articlesFeedService.getFeed();
+    console.log(list);
+    list.forEach((element) => {
+      this.articlesList.push(element);
+    });
   }
 }
