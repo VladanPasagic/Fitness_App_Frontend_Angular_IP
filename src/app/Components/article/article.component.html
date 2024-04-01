@@ -1,5 +1,11 @@
-<div class="container">
+<mat-card class="container">
   <h2>{{ article.title }}</h2>
   <p>{{ article.description }}</p>
-  <a href="{{ article.link }}" target="_blank" rel="noreferrer noopener">Link</a>
-</div>
+  <a
+    mat-button
+    href="{{ article.link }}"
+    target="_blank"
+    rel="noreferrer noopener"
+    >Link</a
+  >
+</mat-card>

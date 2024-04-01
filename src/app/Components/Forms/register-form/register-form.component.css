@@ -1,0 +1,31 @@
+.fileinput {
+  max-width: 212px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: #f6f6f6;
+  border-bottom: solid #8e8e8e 1px;
+  border-radius: 0px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  box-shadow: none;
+}
+
+#fileinput
+{
+    display: none;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-top: 10px;
+  color: #5e5e5e;
+  font-size: 16px;
+}
+
+.fileinput:hover {
+  background-color: #ececec;
+}
+
