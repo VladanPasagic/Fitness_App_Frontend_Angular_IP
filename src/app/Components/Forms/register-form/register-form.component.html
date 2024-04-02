@@ -1,39 +1,63 @@
-<form>
-  <mat-form-field>
-    <mat-label>Enter first name</mat-label>
-    <input matInput type="text" required="required" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Enter last name</mat-label>
-    <input matInput type="text" required="required" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Enter city name</mat-label>
-    <input matInput type="text" required="required" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Enter username</mat-label>
-    <input matInput type="text" required="required" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Enter password</mat-label>
-    <input matInput type="password" required="required" />
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <mat-label>Enter password again</mat-label>
-    <input matInput type="password" required="required" />
-  </mat-form-field>
-  <br />
-  <app-file-input></app-file-input>
-  <br />
-  <mat-form-field>
-    <mat-label>Enter e-mail</mat-label>
-    <input matInput type="email" required="required" />
-  </mat-form-field>
-  <br />
-</form>
+<mat-card class="container">
+  <form [formGroup]="form">
+    <h2>Registration Form</h2>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter first name</mat-label>
+      <input matInput formControlName="firstName" type="text" required="required" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter last name</mat-label>
+      <input matInput formControlName="lastName" type="text" required="required" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter city name</mat-label>
+      <input matInput formControlName="city" type="text" required="required" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter username</mat-label>
+      <input matInput formControlName="username" type="text" required="required" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        required="required"
+        (input)="checkPassword()"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      @if(passwordMatch===true) {<mat-label>Confirm password </mat-label>}
+      @if (passwordMatch===false) {<mat-label style="color: red"
+        >Passwords don't match</mat-label
+      >}
+      <input
+        matInput
+        formControlName="password2"
+        type="password"
+        required="required"
+        (input)="checkPassword()"
+      />
+    </mat-form-field>
+    <br />
+    <app-file-input></app-file-input>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter e-mail</mat-label>
+      <input matInput formControlName="mail" type="email" required="required" />
+    </mat-form-field>
+    <br />
+    <div class="button-cont">
+      <button mat-button (click)="onSubmit()" [disabled]="form.invalid">
+        Register
+      </button>
+    </div>
+  </form>
+</mat-card>

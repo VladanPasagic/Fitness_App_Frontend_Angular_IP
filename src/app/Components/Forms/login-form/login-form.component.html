@@ -1,10 +1,27 @@
-<form>
-  <mat-form-field>
-    <mat-label>Enter username</mat-label>
-    <input matInput type="text" required="required" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Enter password</mat-label>
-    <input matInput type="password" required="required" />
-  </mat-form-field>
-</form>
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Enter username</mat-label>
+      <input
+        matInput
+        formControlName="username"
+        type="text"
+        required="required"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        required="required"
+      />
+    </mat-form-field>
+    <div class="button-cont">
+      <button mat-button (click)="onSubmit()" [disabled]="form.invalid">
+        Login
+      </button>
+    </div>
+  </form>
+</mat-card>
