@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './file-input.component.css',
 })
 export class FileInputComponent {
+  @Input() text!: string;
+  @Input() value!: File;
   public triggerFileInput() {
     document.getElementById('fileinput')?.click();
   }

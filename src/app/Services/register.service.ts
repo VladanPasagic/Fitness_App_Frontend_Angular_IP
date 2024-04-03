@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import { RegistrationRequest } from '../Types/registration-request';
+import { Configuration } from '../../Configuration/config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
+  private baseUrl = new Configuration().backendUrl + '/auth/register';
 
-  constructor() { }
+  constructor() {}
 
-  public sendRequest(request: RegistrationRequest)
-  {
-    console.log(request);
+  public async sendRequest(request: RegistrationRequest) {
+    var response = await fetch(this.baseUrl, {
+      method: 'POST',
+      body: JSON.stringify(request),
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    if (response.ok) {
+      var result = await response.json();
+    }
   }
 }

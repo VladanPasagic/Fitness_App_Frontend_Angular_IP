@@ -4,12 +4,22 @@
     <br />
     <mat-form-field>
       <mat-label>Enter first name</mat-label>
-      <input matInput formControlName="firstName" type="text" required="required" />
+      <input
+        matInput
+        formControlName="firstName"
+        type="text"
+        required="required"
+      />
     </mat-form-field>
     <br />
     <mat-form-field>
       <mat-label>Enter last name</mat-label>
-      <input matInput formControlName="lastName" type="text" required="required" />
+      <input
+        matInput
+        formControlName="lastName"
+        type="text"
+        required="required"
+      />
     </mat-form-field>
     <br />
     <mat-form-field>
@@ -19,7 +29,12 @@
     <br />
     <mat-form-field>
       <mat-label>Enter username</mat-label>
-      <input matInput formControlName="username" type="text" required="required" />
+      <input
+        matInput
+        formControlName="username"
+        type="text"
+        required="required"
+      />
     </mat-form-field>
     <br />
     <mat-form-field>
@@ -34,8 +49,8 @@
     </mat-form-field>
     <br />
     <mat-form-field>
-      @if(passwordMatch===true) {<mat-label>Confirm password </mat-label>}
-      @if (passwordMatch===false) {<mat-label style="color: red"
+      @if(passwordMatch===true) {<mat-label>Confirm password </mat-label>} @if
+      (passwordMatch===false) {<mat-label style="color: red"
         >Passwords don't match</mat-label
       >}
       <input
@@ -47,7 +62,7 @@
       />
     </mat-form-field>
     <br />
-    <app-file-input></app-file-input>
+    <app-file-input [text]="'Select Avatar'"></app-file-input>
     <br />
     <mat-form-field>
       <mat-label>Enter e-mail</mat-label>

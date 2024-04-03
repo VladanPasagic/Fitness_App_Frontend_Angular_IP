@@ -43,9 +43,11 @@ export class RegisterFormComponent {
       password2: [null, Validators.required],
       username: [null, Validators.required],
       city: [null, Validators.required],
+      avatar: [null],
     });
   }
   public onSubmit() {
+    console.log(this.form.value);
     this.service.sendRequest(this.form.value);
   }
 
