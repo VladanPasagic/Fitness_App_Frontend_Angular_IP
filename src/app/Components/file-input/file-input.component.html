@@ -1,4 +1,12 @@
-<mat-card class="fileinput" (click)="triggerFileInput()">
-    <p>{{text}}</p>
-    <input type="file" id="fileinput" value="{{value}}"/>
-  </mat-card>
+<mat-card [formGroup]="form" class="fileinput" (click)="triggerFileInput()">
+  @if (this.form.value.avatar==null) {
+  <p>{{ text }}</p>
+  } @else {
+  <p>{{ this.form.value.avatar }}</p>
+  }
+  <input
+    type="file"
+    id="fileinput"
+    formControlName="{{ formControlNameString }}"
+  />
+</mat-card>
