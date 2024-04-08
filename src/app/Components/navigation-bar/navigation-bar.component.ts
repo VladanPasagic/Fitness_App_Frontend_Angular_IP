@@ -15,7 +15,9 @@ export class NavigationBarComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     let loggedIn = localStorage.getItem('token') !== null;
     !loggedIn && this.navItems.push(new NavigationItem('Login', '/login'));
-    !loggedIn && this.navItems.push(new NavigationItem('Register', '/register'));
+    !loggedIn &&
+      this.navItems.push(new NavigationItem('Register', '/register'));
+    this.navItems.push(new NavigationItem('Fitness plans', '/fitness-program'));
     loggedIn && this.navItems.push(new NavigationItem('Logout', '/logout'));
   }
 }

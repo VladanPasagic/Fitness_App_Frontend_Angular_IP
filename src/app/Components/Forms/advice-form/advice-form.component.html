@@ -1,0 +1,18 @@
+<mat-card class="container">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Enter title</mat-label>
+      <input matInput formControlName="title" type="text" required="required" />
+    </mat-form-field>
+    <br />
+    <mat-form-field style="width: 400px;">
+      <mat-label>Enter question</mat-label>
+      <textarea class="text-area" rows="10" cols="50" matInput formControlName="text" required="required"></textarea>
+    </mat-form-field>
+    <div class="button-cont">
+      <button mat-button (click)="onSubmit()" [disabled]="form.invalid">
+        Submit
+      </button>
+    </div>
+  </form>
+</mat-card>

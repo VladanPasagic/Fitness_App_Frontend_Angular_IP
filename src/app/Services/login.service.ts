@@ -19,6 +19,7 @@ export class LoginService {
     if (response.ok) {
       var result = await response.json();
       localStorage.setItem('token', result.token);
+      localStorage.setItem('id', result.id);
     }
   }
 }
