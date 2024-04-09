@@ -1,5 +1,5 @@
 import { Injectable, numberAttribute } from '@angular/core';
-import { Configuration } from '../../Configuration/config';
+import { Configuration } from '../Configuration/configuration';
 import { AdviceRequest } from '../Types/advice-request';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Configuration } from '../../Configuration/config';
+import { Configuration } from '../Configuration/configuration';
 import { Article } from '../Types/article';
 
 @Injectable({

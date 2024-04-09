@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RegistrationRequest } from '../Types/registration-request';
-import { Configuration } from '../../Configuration/config';
+import { Configuration } from '../Configuration/configuration';
 
 @Injectable({
   providedIn: 'root',

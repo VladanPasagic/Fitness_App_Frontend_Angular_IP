@@ -1,0 +1,41 @@
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Enter name</mat-label>
+      <input
+        matInput
+        formControlName="firstName"
+        type="text"
+        required="required"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter surname</mat-label>
+      <input
+        matInput
+        formControlName="lastName"
+        type="text"
+        required="required"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter city</mat-label>
+      <input matInput formControlName="city" type="text" required="required" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter e-mail</mat-label>
+      <input matInput formControlName="mail" type="email" required="required" />
+    </mat-form-field>
+    <br />
+    <div>
+      <button mat-button (click)="onSubmit()" [disabled]="form.invalid">
+        Save
+      </button>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button (click)="onChangePassword()">Change Password</button>
+    </div>
+  </form>
+</mat-card>
