@@ -6,7 +6,7 @@ import { AdviceRequest } from '../Types/advice-request';
   providedIn: 'root',
 })
 export class AdviceService {
-  private baseUrl = new Configuration().backendUrl + '/advice';
+  private baseUrl = new Configuration().backendUrl + '/advices';
 
   constructor() {}
 

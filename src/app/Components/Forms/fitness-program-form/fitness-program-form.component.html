@@ -1,0 +1,83 @@
+<mat-card class="container">
+  <h1>Training program</h1>
+  <form [formGroup]="form">
+    <div class="form">
+      <div class="half">
+        <mat-form-field>
+          <mat-label>Enter name</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            type="text"
+            required="required"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            type="text"
+            required="required"
+          ></textarea>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Select category</mat-label>
+          <mat-select required="required" formControlName="category">
+            @for (category of categories; track category.id) {
+            <mat-option [value]="category.id">{{ category.name }}</mat-option>
+            }
+            <mat-option></mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Price</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="price"
+            required="required"
+          />
+        </mat-form-field>
+        <br />
+      </div>
+      <div class="half">
+        <mat-form-field>
+          <mat-label>Select level</mat-label>
+          <mat-select required="required" formControlName="level">
+            <mat-option [value]="0">Begginer</mat-option>
+            <mat-option [value]="1">Intermediate</mat-option>
+            <mat-option [value]="2">Hard</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Location</mat-label>
+          <input
+            matInput
+            required="required"
+            formControlName="location"
+            type="text"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Instructor information</mat-label>
+          <textarea matInput formControlName="InstructorInformation"></textarea>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Contact number</mat-label>
+          <input matInput formControlName="contactNumber" required="required" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="button-cont">
+      <button class="button-cont border" mat-button (click)="onSubmit()">Save</button>
+      <button class="button-cont border" mat-button routerLink="/fitness-program">Cancel</button>
+    </div>
+  </form>
+</mat-card>
