@@ -1,0 +1,18 @@
+.error-container {
+    background-color: #f8d7da; /* Reducing emphasis, you can change this color */
+    color: #721c24; /* Font color */
+    border: 1px solid #f5c6cb; /* Border color */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+  }
+  
+  .error-container h2 {
+    font-size: 24px;
+    margin-top: 0;
+  }
+  
+  .error-container p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }

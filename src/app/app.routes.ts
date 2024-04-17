@@ -53,6 +53,7 @@ export const routes: Routes = [
       {
         path: 'add',
         component: FitnessProgramFormComponent,
+        canActivate:[guard]
       },
       {
         path: ':id',

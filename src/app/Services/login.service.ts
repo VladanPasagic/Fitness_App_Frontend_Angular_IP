@@ -14,12 +14,21 @@ export class LoginService {
     var response = await fetch(this.baseUrl, {
       method: 'POST',
       body: JSON.stringify(request),
+      headers:
+      {
+        "Content-Type":"application/json"
+      }
     });
 
     if (response.ok) {
       var result = await response.json();
       localStorage.setItem('token', result.token);
       localStorage.setItem('id', result.id);
+      return null;
+    }
+    else
+    {
+      return response;
     }
   }
 }

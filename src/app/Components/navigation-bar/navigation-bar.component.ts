@@ -19,6 +19,8 @@ export class NavigationBarComponent implements OnInit {
       this.navItems.push(new NavigationItem('Register', '/register'));
     this.navItems.push(new NavigationItem('Fitness plans', '/fitness-program'));
     loggedIn && this.navItems.push(new NavigationItem("Profile", "/profile"));
+    loggedIn && this.navItems.push(new NavigationItem("Journal", "/journal"));
+    loggedIn && this.navItems.push(new  NavigationItem('Get advice', '/advice'));
     loggedIn && this.navItems.push(new NavigationItem('Logout', '/logout'));
   }
 }

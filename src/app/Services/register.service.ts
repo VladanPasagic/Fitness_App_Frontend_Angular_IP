@@ -13,14 +13,24 @@ export class RegisterService {
   public async sendRequest(request: RegistrationRequest) {
     var response = await fetch(this.baseUrl, {
       method: 'POST',
-      body: JSON.stringify(request),
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      body: this.toFormData(request),
     });
 
     if (response.ok) {
       var result = await response.json();
     }
+  }
+
+  private toFormData(request: RegistrationRequest): FormData
+  {
+    const formdata =  new FormData();
+    formdata.append('username', request.username);
+    formdata.append('mail', request.mail);
+    formdata.append('firstName', request.firstName);
+    formdata.append('lastName', request.lastName);
+    formdata.append('password', request.password);
+    formdata.append('city', request.city);
+    formdata.append('avatar', request.avatar);
+    return formdata;
   }
 }

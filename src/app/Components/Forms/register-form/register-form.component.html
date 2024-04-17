@@ -62,7 +62,12 @@
       />
     </mat-form-field>
     <br />
-    <app-file-input [text]="'Select Avatar'" [form]="form" formControlNameString="avatar"></app-file-input>
+    <app-file-input
+      (fileSelected)="onFileSelected($event)"
+      [text]="'Select Avatar'"
+      [form]="form"
+      formControlNameString="avatar"
+    ></app-file-input>
     <br />
     <mat-form-field>
       <mat-label>Enter e-mail</mat-label>

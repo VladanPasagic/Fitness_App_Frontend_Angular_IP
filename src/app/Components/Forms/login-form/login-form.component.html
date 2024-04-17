@@ -1,4 +1,8 @@
-<mat-card>
+<mat-card class="container">
+  @if(errorShown) {
+  <app-error errorMessage="{{error}}"></app-error>
+  }
+  <h2>Login Form</h2>
   <form [formGroup]="form">
     <mat-form-field>
       <mat-label>Enter username</mat-label>
@@ -9,6 +13,7 @@
         required="required"
       />
     </mat-form-field>
+    <br />
     <mat-form-field>
       <mat-label>Enter password</mat-label>
       <input

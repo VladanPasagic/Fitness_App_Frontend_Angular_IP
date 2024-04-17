@@ -2,11 +2,12 @@
   @if (this.form.value.avatar==null) {
   <p>{{ text }}</p>
   } @else {
-  <p>{{ this.form.value.avatar }}</p>
+  <p>{{ "File uploaded" }}</p>
   }
   <input
     type="file"
     id="fileinput"
     formControlName="{{ formControlNameString }}"
+    (change)="handleFiles($event)"
   />
 </mat-card>

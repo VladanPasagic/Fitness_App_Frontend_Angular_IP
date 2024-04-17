@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 
@@ -13,9 +13,17 @@ export class FileInputComponent {
   @Input() text!: string;
   @Input() formControlNameString!: string;
   @Input() form!: FormGroup;
+  @Output() fileSelected = new EventEmitter<File>();
 
   public triggerFileInput() {
     document.getElementById('fileinput')?.click();
-    console.log(this.form.value.avatar);
+  }
+
+  public handleFiles(event: any) {
+    if (event.target.files.length > 0) {
+      const file: File = event.target.files[0];
+      this.fileSelected.emit(file);
+      console.log(file);
+    }
   }
 }

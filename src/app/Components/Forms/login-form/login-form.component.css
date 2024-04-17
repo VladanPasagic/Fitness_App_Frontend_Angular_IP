@@ -1,0 +1,19 @@
+button
+{
+  border: 1px solid black;
+}
+
+.container
+{
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-cont
+{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}

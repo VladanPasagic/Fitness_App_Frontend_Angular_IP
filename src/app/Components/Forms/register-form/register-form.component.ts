@@ -31,6 +31,7 @@ import { RegisterService } from '../../../Services/register.service';
 export class RegisterFormComponent {
   public form: FormGroup;
   public passwordMatch: boolean = true;
+  private selectedAvatar?: File;
   constructor(
     private formBuilder: FormBuilder,
     private service: RegisterService
@@ -43,17 +44,26 @@ export class RegisterFormComponent {
       password2: [null, Validators.required],
       username: [null, Validators.required],
       city: [null, Validators.required],
-      avatar: [null],
+      avatar: [undefined],
     });
   }
   public onSubmit() {
     console.log(this.form.value);
-    this.service.sendRequest(this.form.value);
+    const registerInfo = this.form.value;
+    delete registerInfo.password2;
+    registerInfo.avatar = this.selectedAvatar;
+    this.service.sendRequest(registerInfo);
   }
 
   public checkPassword() {
     if (this.form.get('password')!.value !== this.form.get('password2')!.value)
       this.passwordMatch = false;
     else this.passwordMatch = true;
+  }
+
+  onFileSelected(file: File) {
+    if (file != null) {
+      this.selectedAvatar = file;
+    }
   }
 }
