@@ -1,13 +1,25 @@
 <mat-card class="container">
+  @if (successShown) {
+  <app-success successMessage="{{ success }}"></app-success>
+  } @if(errorShown) {
+  <app-error errorMessage="{{ error }}"></app-error>
+  }
   <form [formGroup]="form">
     <mat-form-field>
       <mat-label>Enter title</mat-label>
       <input matInput formControlName="title" type="text" required="required" />
     </mat-form-field>
     <br />
-    <mat-form-field style="width: 400px;">
+    <mat-form-field style="width: 400px">
       <mat-label>Enter question</mat-label>
-      <textarea class="text-area" rows="10" cols="50" matInput formControlName="text" required="required"></textarea>
+      <textarea
+        class="text-area"
+        rows="10"
+        cols="50"
+        matInput
+        formControlName="text"
+        required="required"
+      ></textarea>
     </mat-form-field>
     <div class="button-cont">
       <button mat-button (click)="onSubmit()" [disabled]="form.invalid">

@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Category } from '../../../Types/category';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { FileInputComponent } from '../../file-input/file-input.component';
 
 @Component({
   selector: 'app-fitness-program-form',
@@ -27,11 +28,13 @@ import { RouterLink } from '@angular/router';
     ReactiveFormsModule,
     MatButtonModule,
     RouterLink,
+    FileInputComponent,
   ],
   templateUrl: './fitness-program-form.component.html',
   styleUrl: './fitness-program-form.component.css',
 })
 export class FitnessProgramFormComponent implements OnInit {
+  private selectedImage?: File;
   public form: FormGroup;
   public categories: Category[] = [];
 
@@ -47,8 +50,9 @@ export class FitnessProgramFormComponent implements OnInit {
       level: [null, Validators.required],
       time: [null, Validators.required],
       location: [null, Validators.required],
-      insturctorInformation: [null, Validators.required],
+      instructorInformation: [null, Validators.required],
       contactNumber: [null, Validators.required],
+      image: [undefined],
     });
   }
 
@@ -57,5 +61,13 @@ export class FitnessProgramFormComponent implements OnInit {
     this.categories.push(...categories);
   }
 
-  public onSubmit() {}
+  onFileSelected(file: File) {
+    if (file != null) {
+      this.selectedImage = file;
+    }
+  }
+
+  public onSubmit() {
+    
+  }
 }

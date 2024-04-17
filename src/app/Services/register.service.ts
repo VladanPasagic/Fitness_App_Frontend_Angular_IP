@@ -21,16 +21,17 @@ export class RegisterService {
     }
   }
 
-  private toFormData(request: RegistrationRequest): FormData
-  {
-    const formdata =  new FormData();
+  private toFormData(request: RegistrationRequest): FormData {
+    const formdata = new FormData();
     formdata.append('username', request.username);
     formdata.append('mail', request.mail);
     formdata.append('firstName', request.firstName);
     formdata.append('lastName', request.lastName);
     formdata.append('password', request.password);
     formdata.append('city', request.city);
-    formdata.append('avatar', request.avatar);
+    if (request.avatar != null) {
+      formdata.append('avatar', request.avatar);
+    }
     return formdata;
   }
 }

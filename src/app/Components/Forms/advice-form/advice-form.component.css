@@ -1,6 +1,7 @@
 .button-cont
 {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 10px;
 }
@@ -8,6 +9,7 @@
 button
 {
   border: 1px solid black;
+  margin: 10px;
 }
 
 .container

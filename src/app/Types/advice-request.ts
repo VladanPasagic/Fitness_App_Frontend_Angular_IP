@@ -1,5 +1,5 @@
 export interface AdviceRequest {
-    id: number;
+    userId: number;
     title: string;
     text: string;
 }

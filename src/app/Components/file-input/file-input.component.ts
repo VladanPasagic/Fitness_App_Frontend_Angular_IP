@@ -13,6 +13,7 @@ export class FileInputComponent {
   @Input() text!: string;
   @Input() formControlNameString!: string;
   @Input() form!: FormGroup;
+  @Input() required = false;
   @Output() fileSelected = new EventEmitter<File>();
 
   public triggerFileInput() {

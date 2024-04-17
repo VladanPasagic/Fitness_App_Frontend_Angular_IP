@@ -7,9 +7,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardAvatar, MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UserService } from '../../../Services/user.service';
+import { UserProfile } from '../../../Types/user-profile';
+import { SuccessComponent } from '../../success/success.component';
+import { ErrorComponent } from '../../error/error.component';
 
 @Component({
   selector: 'app-user-profile-form',
@@ -22,6 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
+    SuccessComponent,
+    ErrorComponent,
   ],
   templateUrl: './user-profile-form.component.html',
   styleUrl: './user-profile-form.component.css',
@@ -29,7 +35,12 @@ import { MatInputModule } from '@angular/material/input';
 export class UserProfileFormComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  private user?: UserProfile;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {
     this.form = formBuilder.group({
       mail: [null, [Validators.required, Validators.email]],
       firstName: [null, Validators.required],
@@ -39,17 +50,26 @@ export class UserProfileFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // send request to backend and get profile data
-    throw new Error('Method not implemented.');
+  async ngOnInit(): Promise<void> {
+    let user: UserProfile = await this.userService.getUser();
+    this.user = user;
+    if (user != null) {
+      this.form.get('mail')!.setValue(user.mail);
+      this.form.get('firstName')!.setValue(user.firstName);
+      this.form.get('lastName')!.setValue(user.lastName);
+      this.form.get('city')!.setValue(user.city);
+    }
   }
 
   public onSubmit() {
-    //send request to backend to save profile data
+    this.userService.update(this.form.value);
   }
 
   public onCancel() {
-    //revert to previous state
+    this.form.get('mail')!.setValue(this.user!.mail);
+    this.form.get('firstName')!.setValue(this.user!.firstName);
+    this.form.get('lastName')!.setValue(this.user!.lastName);
+    this.form.get('city')!.setValue(this.user!.city);
   }
 
   public onChangePassword() {

@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { AdviceService } from '../../../Services/advice.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SuccessComponent } from '../../success/success.component';
+import { ErrorComponent } from '../../error/error.component';
 
 @Component({
   selector: 'app-advice-form',
@@ -22,11 +24,18 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    SuccessComponent,
+    ErrorComponent,
   ],
   templateUrl: './advice-form.component.html',
   styleUrl: './advice-form.component.css',
 })
 export class AdviceFormComponent {
+  public successShown = false;
+  public errorShown = false;
+  public success = '';
+  public error = '';
+
   public form: FormGroup;
 
   constructor(

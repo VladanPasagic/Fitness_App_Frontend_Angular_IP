@@ -48,7 +48,7 @@
         <mat-form-field>
           <mat-label>Select level</mat-label>
           <mat-select required="required" formControlName="level">
-            <mat-option [value]="0">Begginer</mat-option>
+            <mat-option [value]="0">Beginner</mat-option>
             <mat-option [value]="1">Intermediate</mat-option>
             <mat-option [value]="2">Hard</mat-option>
           </mat-select>
@@ -66,18 +66,35 @@
         <br />
         <mat-form-field>
           <mat-label>Instructor information</mat-label>
-          <textarea matInput formControlName="InstructorInformation"></textarea>
+          <textarea matInput formControlName="instructorInformation"></textarea>
         </mat-form-field>
         <br />
         <mat-form-field>
           <mat-label>Contact number</mat-label>
           <input matInput formControlName="contactNumber" required="required" />
         </mat-form-field>
+        <div>
+          <app-file-input
+            (fileSelected)="onFileSelected($event)"
+            [text]="'Select image*'"
+            [required]="true"
+            [form]="form"
+            formControlNameString="image"
+          ></app-file-input>
+        </div>
       </div>
     </div>
     <div class="button-cont">
-      <button class="button-cont border" mat-button (click)="onSubmit()">Save</button>
-      <button class="button-cont border" mat-button routerLink="/fitness-program">Cancel</button>
+      <button class="button-cont border" mat-button (click)="onSubmit()">
+        Save
+      </button>
+      <button
+        class="button-cont border"
+        mat-button
+        routerLink="/fitness-program"
+      >
+        Cancel
+      </button>
     </div>
   </form>
 </mat-card>

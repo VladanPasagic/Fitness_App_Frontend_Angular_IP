@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="container">
   <form [formGroup]="form">
     <mat-form-field>
       <mat-label>Enter name</mat-label>
@@ -30,7 +30,7 @@
       <input matInput formControlName="mail" type="email" required="required" />
     </mat-form-field>
     <br />
-    <div>
+    <div class="button-cont">
       <button mat-button (click)="onSubmit()" [disabled]="form.invalid">
         Save
       </button>

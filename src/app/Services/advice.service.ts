@@ -1,6 +1,7 @@
 import { Injectable, numberAttribute } from '@angular/core';
 import { Configuration } from '../Configuration/configuration';
 import { AdviceRequest } from '../Types/advice-request';
+import { Util } from '../Util/util';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,13 @@ export class AdviceService {
   constructor() {}
 
   public async sendRequest(request: AdviceRequest) {
-    request.id = Number(localStorage.getItem('id'));
+    request.userId = new Util().getId();
     var response = await fetch(this.baseUrl, {
       method: 'POST',
-      body: JSON.stringify(request)
+      body: JSON.stringify(request),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   }
 }
