@@ -2,19 +2,24 @@ import { Injectable } from '@angular/core';
 import { FitnessProgram } from '../Types/fitness-program';
 import { Configuration } from '../Configuration/configuration';
 import { Util } from '../Util/util';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FitnessProgramService {
   private baseUrl = new Configuration().backendUrl + '/training-programs';
-  constructor() {}
+
+  constructor(private router: Router) {}
 
   async create(fitnessProgram: FitnessProgram): Promise<void> {
     const response = await fetch(this.baseUrl, {
       method: 'POST',
       body: this.toFormData(fitnessProgram),
     });
+    if (response.ok) {
+      this.router.navigate(['../fitness-program']);
+    }
   }
 
   async getAll(): Promise<FitnessProgram[]> {
@@ -29,11 +34,12 @@ export class FitnessProgramService {
     formData.append('name', fitnessProgram.name);
     formData.append('description', fitnessProgram.description);
     formData.append('categoryId', fitnessProgram.category);
-    formData.append('location', fitnessProgram.location);
+    formData.append('locationId', fitnessProgram.location.id.toString());
+    formData.append('locationName', fitnessProgram.location.location);
     formData.append('price', fitnessProgram.price.toString());
     formData.append('level', fitnessProgram.level.toString());
     formData.append('image', fitnessProgram.image);
-    formData.append('creator', new Util().getId().toString());
+    formData.append('creatorId', new Util().getId().toString());
     if (fitnessProgram.instructorInformation != null) {
       formData.append(
         'instructorInformation',
@@ -46,12 +52,17 @@ export class FitnessProgramService {
     return formData;
   }
 
-  async getById(id: number): Promise<FitnessProgram> {
+  async getById(id: number): Promise<FitnessProgram | undefined> {
     const response = await fetch(this.baseUrl + '/' + id, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    return response.json();
+    console.log(response);
+    if (response.ok) {
+      return response.json();
+    } else {
+      return undefined;
+    }
   }
 }

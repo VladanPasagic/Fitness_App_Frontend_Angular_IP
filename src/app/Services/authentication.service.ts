@@ -6,17 +6,10 @@ import { Util } from '../Util/util';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationService implements OnInit {
-  private loggedIn = new BehaviorSubject<boolean>(false);
+export class AuthenticationService {
+  private loggedIn = new BehaviorSubject<boolean>(new Util().isLoggedIn());
 
   constructor(private router: Router) {}
-  ngOnInit(): void {
-    if (new Util().isLoggedIn()) {
-      this.loggedIn.next(true);
-    } else {
-      this.loggedIn.next(false);
-    }
-  }
 
   login(token: string, id: string) {
     localStorage.setItem('token', token);

@@ -23,6 +23,7 @@ export class LoginService {
 
     if (response.ok) {
       var result = await response.json();
+      console.log(result);
       this.authService.login(result.token, result.id);
       return null;
     }

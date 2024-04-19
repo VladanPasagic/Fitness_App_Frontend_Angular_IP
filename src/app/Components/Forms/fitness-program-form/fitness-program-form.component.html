@@ -55,13 +55,11 @@
         </mat-form-field>
         <br />
         <mat-form-field>
-          <mat-label>Location</mat-label>
-          <input
-            matInput
-            required="required"
-            formControlName="location"
-            type="text"
-          />
+          <mat-label>Select level</mat-label>
+          <mat-select required="required" formControlName="level">
+            <mat-option [value]="0">Online</mat-option>
+            <mat-option [value]="1">Offline</mat-option>
+          </mat-select>
         </mat-form-field>
         <br />
         <mat-form-field>

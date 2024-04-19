@@ -51,7 +51,7 @@ export class FitnessProgramFormComponent implements OnInit {
       price: [null, Validators.required],
       level: [null, Validators.required],
       time: [null, Validators.required],
-      location: [null, Validators.required],
+      locationId: [null, Validators.required],
       instructorInformation: [null, Validators.required],
       contactNumber: [null, Validators.required],
       image: [undefined],

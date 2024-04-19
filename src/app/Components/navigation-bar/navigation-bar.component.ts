@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SingleNavBarItemComponent } from '../single-nav-bar-item/single-nav-bar-item.component';
 import { NavigationItem } from '../../Types/navigation-item';
 import { AuthenticationService } from '../../Services/authentication.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -36,6 +35,8 @@ export class NavigationBarComponent implements OnInit {
       this.navItems.push(new NavigationItem('Profile', '/profile'));
     this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Journal', '/journal'));
+    this.isLoggedIn &&
+      this.navItems.push(new NavigationItem('Exercise', '/exercises'));
     this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Get advice', '/advice'));
     this.isLoggedIn &&

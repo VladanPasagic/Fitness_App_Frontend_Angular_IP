@@ -10,6 +10,7 @@ import { FitnessProgramsPageComponent } from './Pages/fitness-programs-page/fitn
 import { FitnessProgramPageComponent } from './Pages/fitness-program-page/fitness-program-page.component';
 import { FitnessProgramFormComponent } from './Components/Forms/fitness-program-form/fitness-program-form.component';
 import { LogoutComponent } from './Components/logout/logout.component';
+import { ExercisePageComponent } from './Pages/exercise-page/exercise-page.component';
 
 export const routes: Routes = [
   {
@@ -64,12 +65,18 @@ export const routes: Routes = [
     ],
   },
   {
-    path:'logout',
-    component: LogoutComponent
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [guard],
   },
   {
     path: 'profile',
     component: UserProfilePageComponent,
+    canActivate: [guard],
+  },
+  {
+    path: 'exercises',
+    component: ExercisePageComponent,
     canActivate: [guard],
   },
 ];

@@ -1,1 +1,37 @@
+@if (this.fitnessProgram!=null) {
+<div class="container">
+  <mat-card class="program-details half">
+    <h2>{{ fitnessProgram.name }}</h2>
+    <p>{{ fitnessProgram.description }}</p>
+    <ul>
+      <li><strong>Category:</strong> {{ fitnessProgram.category.name }}</li>
+      <li><strong>Price:</strong> {{ fitnessProgram.price }} $</li>
+      <li><strong>Level:</strong> {{ fitnessProgram.level }}</li>
+      <li><strong>Time:</strong> {{ fitnessProgram.time }}</li>
+      <li><strong>Location:</strong> {{ fitnessProgram.location.type }}</li>
+      <li>
+        <strong>Instructor Information:</strong>
+        {{ fitnessProgram.instructorInformation }}
+      </li>
+      <li>
+        <strong>Contact Number:</strong> {{ fitnessProgram.contactNumber }}
+      </li>
+    </ul>
+    <img [src]="fitnessProgram.image" alt="Program image" />
+    @if (fitnessProgram.creator.id === loggedInUserId) {
+    <button mat-button (click)="onDelete()">Delete</button>
+    } @if (loggedInUserId) {
+    <button mat-button (click)="onParticipate()">Participate</button>
+    }
+  </mat-card>
+  @if(loggedInUserId) {
+  <mat-card class="comments program-details half">
+    <h3>Comments:</h3>
 
+    <app-comment-form
+      [trainingProgramId]="fitnessProgram.id"
+    ></app-comment-form>
+  </mat-card>
+  }
+</div>
+}
