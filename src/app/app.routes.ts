@@ -11,6 +11,7 @@ import { FitnessProgramPageComponent } from './Pages/fitness-program-page/fitnes
 import { FitnessProgramFormComponent } from './Components/Forms/fitness-program-form/fitness-program-form.component';
 import { LogoutComponent } from './Components/logout/logout.component';
 import { ExercisePageComponent } from './Pages/exercise-page/exercise-page.component';
+import { FitnessProgramNavigationComponent } from './Components/fitness-program-navigation/fitness-program-navigation.component';
 
 export const routes: Routes = [
   {
@@ -47,11 +48,22 @@ export const routes: Routes = [
   },
   {
     path: 'fitness-program',
+    component: FitnessProgramNavigationComponent,
     children: [
       {
-        path: '',
+        path: 'all',
         pathMatch: 'full',
         component: FitnessProgramsPageComponent,
+      },
+      {
+        path: 'my',
+        component: FitnessProgramsPageComponent,
+        canActivate: [guard],
+      },
+      {
+        path: 'participated',
+        component: FitnessProgramsPageComponent,
+        canActivate: [guard],
       },
       {
         path: 'add',

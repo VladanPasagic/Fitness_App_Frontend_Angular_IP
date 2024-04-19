@@ -1,0 +1,10 @@
+ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.border
+{
+    border: 1px solid black;
+}

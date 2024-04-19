@@ -65,4 +65,17 @@ export class FitnessProgramService {
       return undefined;
     }
   }
+
+  async getAllByCreatorId(userId: number): Promise<FitnessProgram[]> {
+    const response = await fetch(this.baseUrl + '/creator/' + userId, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(response);
+    if (response.ok) {
+      return response.json();
+    }
+    return [];
+  }
 }

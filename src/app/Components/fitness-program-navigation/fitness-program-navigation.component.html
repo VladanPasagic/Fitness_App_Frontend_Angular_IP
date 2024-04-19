@@ -1,0 +1,10 @@
+@if (isLoggedIn) {
+<nav class="border">
+  <ul>
+    @for (item of navItems; track $index) {
+    <app-single-nav-bar-item [item]="item"></app-single-nav-bar-item>
+    }
+  </ul>
+</nav>
+}
+<router-outlet></router-outlet>
