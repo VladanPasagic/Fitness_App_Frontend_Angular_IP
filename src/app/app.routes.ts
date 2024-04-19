@@ -9,6 +9,7 @@ import { JournalPageComponent } from './Pages/journal-page/journal-page.componen
 import { FitnessProgramsPageComponent } from './Pages/fitness-programs-page/fitness-programs-page.component';
 import { FitnessProgramPageComponent } from './Pages/fitness-program-page/fitness-program-page.component';
 import { FitnessProgramFormComponent } from './Components/Forms/fitness-program-form/fitness-program-form.component';
+import { LogoutComponent } from './Components/logout/logout.component';
 
 export const routes: Routes = [
   {
@@ -48,18 +49,23 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
         component: FitnessProgramsPageComponent,
       },
       {
         path: 'add',
         component: FitnessProgramFormComponent,
-        canActivate:[guard]
+        canActivate: [guard],
       },
       {
         path: ':id',
         component: FitnessProgramPageComponent,
       },
     ],
+  },
+  {
+    path:'logout',
+    component: LogoutComponent
   },
   {
     path: 'profile',

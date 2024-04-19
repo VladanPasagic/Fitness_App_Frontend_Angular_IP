@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FileInputComponent } from '../../file-input/file-input.component';
 import { MatButtonModule } from '@angular/material/button';
 import { RegisterService } from '../../../Services/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -34,7 +35,8 @@ export class RegisterFormComponent {
   private selectedAvatar?: File;
   constructor(
     private formBuilder: FormBuilder,
-    private service: RegisterService
+    private service: RegisterService,
+    private router: Router
   ) {
     this.form = formBuilder.group({
       firstName: [null, Validators.required],
@@ -48,11 +50,11 @@ export class RegisterFormComponent {
     });
   }
   public onSubmit() {
-    console.log(this.form.value);
     const registerInfo = this.form.value;
     delete registerInfo.password2;
     registerInfo.avatar = this.selectedAvatar;
     this.service.sendRequest(registerInfo);
+    this.router.navigate(['/login']);
   }
 
   public checkPassword() {

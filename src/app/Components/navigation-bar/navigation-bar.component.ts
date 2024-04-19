@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SingleNavBarItemComponent } from '../single-nav-bar-item/single-nav-bar-item.component';
 import { NavigationItem } from '../../Types/navigation-item';
+import { AuthenticationService } from '../../Services/authentication.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -12,15 +14,31 @@ import { NavigationItem } from '../../Types/navigation-item';
 export class NavigationBarComponent implements OnInit {
   navItems: NavigationItem[] = [];
 
-  async ngOnInit(): Promise<void> {
-    let loggedIn = localStorage.getItem('token') !== null;
-    !loggedIn && this.navItems.push(new NavigationItem('Login', '/login'));
-    !loggedIn &&
+  isLoggedIn: boolean = false;
+
+  constructor(private authService: AuthenticationService) {}
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+      this.navItems = [];
+      this.updateNavItems();
+    });
+  }
+
+  private updateNavItems() {
+    !this.isLoggedIn &&
+      this.navItems.push(new NavigationItem('Login', '/login'));
+    !this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Register', '/register'));
     this.navItems.push(new NavigationItem('Fitness plans', '/fitness-program'));
-    loggedIn && this.navItems.push(new NavigationItem("Profile", "/profile"));
-    loggedIn && this.navItems.push(new NavigationItem("Journal", "/journal"));
-    loggedIn && this.navItems.push(new  NavigationItem('Get advice', '/advice'));
-    loggedIn && this.navItems.push(new NavigationItem('Logout', '/logout'));
+    this.isLoggedIn &&
+      this.navItems.push(new NavigationItem('Profile', '/profile'));
+    this.isLoggedIn &&
+      this.navItems.push(new NavigationItem('Journal', '/journal'));
+    this.isLoggedIn &&
+      this.navItems.push(new NavigationItem('Get advice', '/advice'));
+    this.isLoggedIn &&
+      this.navItems.push(new NavigationItem('Logout', '/logout'));
   }
 }

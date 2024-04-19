@@ -15,6 +15,7 @@ import { Category } from '../../../Types/category';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { FileInputComponent } from '../../file-input/file-input.component';
+import { FitnessProgramService } from '../../../Services/fitness-program.service';
 
 @Component({
   selector: 'app-fitness-program-form',
@@ -40,7 +41,8 @@ export class FitnessProgramFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private fitnessProgramService: FitnessProgramService
   ) {
     this.form = formBuilder.group({
       name: [null, Validators.required],
@@ -68,6 +70,9 @@ export class FitnessProgramFormComponent implements OnInit {
   }
 
   public onSubmit() {
-    
+    const fitnessProgramInfo = this.form.value;
+    delete fitnessProgramInfo.image;
+    fitnessProgramInfo.image = this.selectedImage;
+    this.fitnessProgramService.create(fitnessProgramInfo);
   }
 }

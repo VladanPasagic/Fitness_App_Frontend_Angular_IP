@@ -1,7 +1,13 @@
-<mat-card-content class="card" routerLink="{{ item.id }}">
-  <h1>{{ item.name }}</h1>
+<mat-card class="card" routerLink="{{ item.id }}">
+  <h1>
+    <b>{{ item.name }}</b>
+  </h1>
   <p>
-    <i>{{ item.price }}</i>
+    <i>{{ item.price }}$</i>
   </p>
-  <img src="{{ item.images[0] }}" alt="{{ item.name }} + image" />
-</mat-card-content>
+  <img
+    style="height: 250px; width: 250px"
+    src="{{ item.image }}"
+    alt="{{ item.name }} + image"
+  />
+</mat-card>

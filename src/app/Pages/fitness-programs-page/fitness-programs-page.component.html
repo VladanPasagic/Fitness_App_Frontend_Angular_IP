@@ -1,10 +1,10 @@
 @if (loggedIn) {
-<button mat-button>Create</button>
+<button mat-button routerLink="add">Create</button>
 }
 <div class="container">
-@for (item of items; track item.id) {
-<app-fitness-program [item]="item"></app-fitness-program>
-}
+  @for (item of items; track item.id) {
+  <app-fitness-program [item]="item"></app-fitness-program>
+  }
 </div>
 <mat-paginator [length]="{total}"></mat-paginator>
 <router-outlet></router-outlet>

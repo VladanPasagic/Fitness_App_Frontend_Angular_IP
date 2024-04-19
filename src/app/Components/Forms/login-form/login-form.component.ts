@@ -34,7 +34,11 @@ export class LoginFormComponent {
   public errorShown = false;
 
   public form: FormGroup;
-  constructor(private formBuilder: FormBuilder, private service: LoginService, private router:Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: LoginService,
+    private router: Router,
+  ) {
     this.form = formBuilder.group({
       username: [null, Validators.required],
       password: [null, Validators.required],
@@ -51,10 +55,6 @@ export class LoginFormComponent {
         this.errorShown = true;
         this.error = 'Server error';
       }
-    }
-    else
-    {
-    this.router.navigate(["/fitness-programs"])
     }
   }
 }

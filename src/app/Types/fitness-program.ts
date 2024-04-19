@@ -9,7 +9,7 @@ export interface FitnessProgram {
   level: number;
   time: Time;
   location: string;
-  images: Array<string>;
+  image: any;
   instructorInformation: string;
   contactNumber: string;
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginRequest } from '../Types/login-request';
 import { Configuration } from '../Configuration/configuration';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { Configuration } from '../Configuration/configuration';
 export class LoginService {
   private baseUrl = new Configuration().backendUrl + '/auth/login';
 
-  constructor() {}
+  constructor(private authService:AuthenticationService) {}
 
   public async sendRequest(request: LoginRequest) {
     var response = await fetch(this.baseUrl, {
@@ -22,8 +23,7 @@ export class LoginService {
 
     if (response.ok) {
       var result = await response.json();
-      localStorage.setItem('token', result.token);
-      localStorage.setItem('id', result.id);
+      this.authService.login(result.token, result.id);
       return null;
     }
     else
