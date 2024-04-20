@@ -32,7 +32,7 @@ export class FitnessProgramsPageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.loggedIn = new Util().isLoggedIn();
-    if (this.router.url !== '/fitness-programs/my') {
+    if (this.router.url !== '/fitness-program/my') {
       this.items = await this.fitnessProgramService.getAll();
       this.items.map((i) => (i.image = new Util().getImageLink(i.image)));
     } else {

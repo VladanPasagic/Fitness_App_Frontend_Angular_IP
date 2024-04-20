@@ -48,7 +48,17 @@ export class AdviceFormComponent {
     });
   }
 
-  public onSubmit() {
-    this.service.sendRequest(this.form.value);
+  public async onSubmit() {
+    let result = await this.service.sendRequest(this.form.value);
+    if (result) {
+      this.errorShown = false;
+      this.successShown = true;
+      this.success = 'Successfully sent question!';
+      this.form.reset();
+    } else {
+      this.successShown = false;
+      this.errorShown = true;
+      this.error = 'Error occured';
+    }
   }
 }

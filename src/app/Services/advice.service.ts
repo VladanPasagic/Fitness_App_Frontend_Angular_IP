@@ -11,7 +11,7 @@ export class AdviceService {
 
   constructor() {}
 
-  public async sendRequest(request: AdviceRequest) {
+  public async sendRequest(request: AdviceRequest): Promise<boolean> {
     request.userId = new Util().getId();
     var response = await fetch(this.baseUrl, {
       method: 'POST',
@@ -20,5 +20,10 @@ export class AdviceService {
         'Content-Type': 'application/json',
       },
     });
+    if (response.ok) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

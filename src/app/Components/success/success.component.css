@@ -1,7 +1,7 @@
 .success-container {
-  background-color: #f8d7da; /* Reducing emphasis, you can change this color */
+  background-color: lightblue; /* Reducing emphasis, you can change this color */
   color: green; /* Font color */
-  border: 1px solid #f5c6cb; /* Border color */
+  border: 1px solid lightblue; /* Border color */
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 4px;
