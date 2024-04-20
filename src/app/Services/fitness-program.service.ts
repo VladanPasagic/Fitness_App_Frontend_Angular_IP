@@ -58,7 +58,6 @@ export class FitnessProgramService {
         'Content-Type': 'application/json',
       },
     });
-    console.log(response);
     if (response.ok) {
       return response.json();
     } else {
@@ -72,10 +71,24 @@ export class FitnessProgramService {
         'Content-Type': 'application/json',
       },
     });
-    console.log(response);
     if (response.ok) {
       return response.json();
     }
     return [];
+  }
+
+
+  async participate(trainingProgramId: number) {
+    let request = { userId: new Util().getId() };
+    const response = await fetch(
+      this.baseUrl + `/participate/${trainingProgramId}`,
+      {
+        body: JSON.stringify(request),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 }

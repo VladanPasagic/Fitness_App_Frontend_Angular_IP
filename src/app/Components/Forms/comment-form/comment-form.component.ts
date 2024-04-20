@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommentService } from '../../../Services/comment.service';
 import { Util } from '../../../Util/util';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-comment-form',
@@ -21,6 +22,7 @@ import { Util } from '../../../Util/util';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatInputModule
   ],
   templateUrl: './comment-form.component.html',
   styleUrl: './comment-form.component.css',

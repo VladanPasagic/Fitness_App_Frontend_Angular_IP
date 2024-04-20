@@ -1,0 +1,44 @@
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Select payment option</mat-label>
+      <mat-select
+        formControlName="select"
+        (selectionChange)="paymentSelected()"
+      >
+        <mat-option [value]="0">Card</mat-option>
+        <mat-option [value]="1">Cash</mat-option>
+        <mat-option [value]="2">Paypal</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    @if (paypalSelected) {
+    <mat-form-field>
+      <mat-label>Enter email</mat-label>
+      <input
+        matInput
+        placeholder="Email address"
+        formControlName="email"
+        type="email"
+        required="required"
+      />
+    </mat-form-field>
+    <br />
+    } @if (cashSelected) { <br />
+    } @if(cardSelected) {
+    <mat-form-field>
+      <mat-label>Enter card number</mat-label>
+      <input
+        matInput
+        placeholder="Card Number"
+        formControlName="cardNumber"
+        type="number"
+        required="required"
+      />
+    </mat-form-field>
+    <br />
+    } @if (paymentIsSelected) {
+    <button mat-button (click)="onParticipate()">Participate</button>
+    }
+  </form>
+</mat-card>

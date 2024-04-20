@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Configuration } from '../Configuration/configuration';
-import { Util } from '../Util/util';
+import { Comment } from '../Types/comment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,6 @@ export class CommentService {
   constructor() {}
 
   public async sendComment(fitnessProgramId: number, message: string) {
-    console.log(JSON.stringify(message));
     const response = await fetch(
       this.baseUrl + '/' + fitnessProgramId + '/comments',
       {
@@ -21,5 +20,14 @@ export class CommentService {
         },
       }
     );
+  }
+
+  public async getAll(id: number): Promise<Comment[]> {
+    const response = await fetch(this.baseUrl + '/' + id + '/comments', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return await response.json();
   }
 }

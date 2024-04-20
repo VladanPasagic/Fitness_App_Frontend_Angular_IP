@@ -21,17 +21,25 @@
     @if (fitnessProgram.creator.id === loggedInUserId) {
     <button mat-button (click)="onDelete()">Delete</button>
     } @if (loggedInUserId) {
-    <button mat-button (click)="onParticipate()">Participate</button>
+    <button mat-button (click)="onParticipateShown()">Participate</button>
     }
   </mat-card>
   @if(loggedInUserId) {
   <mat-card class="comments program-details half">
     <h3>Comments:</h3>
-
+    <mat-list class="scroll comment-container">
+      @for (comment of comments; track comment.id) {
+      <app-comment [comment]="comment"></app-comment>
+      }
+    </mat-list>
     <app-comment-form
       [trainingProgramId]="fitnessProgram.id"
     ></app-comment-form>
   </mat-card>
   }
 </div>
-}
+@if (participationShown) {
+<mat-card class="half program-details">
+  <app-payment (participate)="onParticipate()"></app-payment>
+</mat-card>
+} }
