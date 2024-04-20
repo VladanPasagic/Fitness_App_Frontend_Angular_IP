@@ -9,5 +9,4 @@ import { ParticipationComponent } from '../../Components/participation/participa
   styleUrl: './participation-page.component.css',
 })
 export class ParticipationPageComponent{
-  constructor() {}
 }

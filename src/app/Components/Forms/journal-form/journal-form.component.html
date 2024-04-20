@@ -1,0 +1,45 @@
+<mat-card class="container">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Enter type:</mat-label>
+      <input matInput formControlName="type" type="text" required="required" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Duration:</mat-label>
+      <input
+        matInput
+        formControlName="duration"
+        type="number"
+        required="required"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Select intensity</mat-label>
+      <mat-select required="required" formControlName="intensity">
+        <mat-option [value]="0">Beginner</mat-option>
+        <mat-option [value]="1">Intermediate</mat-option>
+        <mat-option [value]="2">Hard</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Result:</mat-label>
+      <input
+        matInput
+        required="required"
+        type="number"
+        formControlName="result"
+      />
+    </mat-form-field>
+    <div class="button-cont">
+      <button class="button-cont border" mat-button (click)="onSubmit()">
+        Submit
+      </button>
+      <button class="button-cont border" mat-button routerLink="/journal">
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>

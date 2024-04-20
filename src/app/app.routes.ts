@@ -14,6 +14,7 @@ import { ExercisePageComponent } from './Pages/exercise-page/exercise-page.compo
 import { FitnessProgramNavigationComponent } from './Components/fitness-program-navigation/fitness-program-navigation.component';
 import { ParticipationPageComponent } from './Pages/participation-page/participation-page.component';
 import { VerificationPageComponent } from './Pages/verification-page/verification-page.component';
+import { JournalFormComponent } from './Components/Forms/journal-form/journal-form.component';
 
 export const routes: Routes = [
   {
@@ -47,7 +48,7 @@ export const routes: Routes = [
       },
       {
         path: 'add',
-        component: AdvicePageComponent,
+        component: JournalFormComponent,
         canActivate: [guard],
       },
     ],

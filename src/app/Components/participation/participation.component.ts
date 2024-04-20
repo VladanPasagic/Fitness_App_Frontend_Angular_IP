@@ -26,6 +26,5 @@ export class ParticipationComponent implements OnInit {
         )
       );
     });
-    this.dataSource = this.dataSource;
   }
 }
