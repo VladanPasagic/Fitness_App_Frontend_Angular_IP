@@ -46,7 +46,7 @@ export class RegisterFormComponent {
       password2: [null, Validators.required],
       username: [null, Validators.required],
       city: [null, Validators.required],
-      avatar: [undefined],
+      image: [undefined],
     });
   }
   public onSubmit() {

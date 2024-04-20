@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { FileInputComponent } from '../../file-input/file-input.component';
 import { FitnessProgramService } from '../../../Services/fitness-program.service';
+import { Location } from '../../../Types/location';
 
 @Component({
   selector: 'app-fitness-program-form',
@@ -52,6 +53,7 @@ export class FitnessProgramFormComponent implements OnInit {
       level: [null, Validators.required],
       time: [null, Validators.required],
       locationId: [null, Validators.required],
+      address: [null, Validators.required],
       instructorInformation: [null, Validators.required],
       contactNumber: [null, Validators.required],
       image: [undefined],
@@ -73,6 +75,10 @@ export class FitnessProgramFormComponent implements OnInit {
     const fitnessProgramInfo = this.form.value;
     delete fitnessProgramInfo.image;
     fitnessProgramInfo.image = this.selectedImage;
+    console.log(this.form.value.locationId);
+    fitnessProgramInfo.location = new Location();
+    fitnessProgramInfo.location.type = this.form.value.locationId;
+    fitnessProgramInfo.location.location = this.form.value.address;
     this.fitnessProgramService.create(fitnessProgramInfo);
   }
 }

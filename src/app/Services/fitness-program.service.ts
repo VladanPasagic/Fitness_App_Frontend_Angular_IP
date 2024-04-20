@@ -18,7 +18,7 @@ export class FitnessProgramService {
       body: this.toFormData(fitnessProgram),
     });
     if (response.ok) {
-      this.router.navigate(['../fitness-program']);
+      this.router.navigate(['../fitness-program/all']);
     }
   }
 

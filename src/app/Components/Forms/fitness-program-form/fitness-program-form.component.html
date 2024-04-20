@@ -43,6 +43,15 @@
           />
         </mat-form-field>
         <br />
+        <mat-form-field>
+          <mat-label>Select date</mat-label>
+          <input
+            matInput
+            type="date"
+            formControlName="time"
+            required="required"
+          />
+        </mat-form-field>
       </div>
       <div class="half">
         <mat-form-field>
@@ -55,11 +64,21 @@
         </mat-form-field>
         <br />
         <mat-form-field>
-          <mat-label>Select level</mat-label>
-          <mat-select required="required" formControlName="level">
+          <mat-label>Select location</mat-label>
+          <mat-select required="required" formControlName="locationId">
             <mat-option [value]="0">Online</mat-option>
             <mat-option [value]="1">Offline</mat-option>
           </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="address"
+            required="required"
+          />
         </mat-form-field>
         <br />
         <mat-form-field>

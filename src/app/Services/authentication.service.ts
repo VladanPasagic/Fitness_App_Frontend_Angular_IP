@@ -15,7 +15,7 @@ export class AuthenticationService {
     localStorage.setItem('token', token);
     localStorage.setItem('id', id);
     this.loggedIn.next(true);
-    this.router.navigate(['/fitness-program']);
+    this.router.navigate(['/fitness-program/all']);
   }
 
   logout() {

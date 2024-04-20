@@ -24,7 +24,6 @@ export class FileInputComponent {
     if (event.target.files.length > 0) {
       const file: File = event.target.files[0];
       this.fileSelected.emit(file);
-      console.log(file);
     }
   }
 }
