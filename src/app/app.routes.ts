@@ -12,6 +12,8 @@ import { FitnessProgramFormComponent } from './Components/Forms/fitness-program-
 import { LogoutComponent } from './Components/logout/logout.component';
 import { ExercisePageComponent } from './Pages/exercise-page/exercise-page.component';
 import { FitnessProgramNavigationComponent } from './Components/fitness-program-navigation/fitness-program-navigation.component';
+import { ParticipationPageComponent } from './Pages/participation-page/participation-page.component';
+import { VerificationPageComponent } from './Pages/verification-page/verification-page.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
+  },
+  {
+    path: 'verify',
+    component: VerificationPageComponent,
   },
   {
     path: 'register',
@@ -62,7 +68,7 @@ export const routes: Routes = [
       },
       {
         path: 'participated',
-        component: FitnessProgramsPageComponent,
+        component: ParticipationPageComponent,
         canActivate: [guard],
       },
       {

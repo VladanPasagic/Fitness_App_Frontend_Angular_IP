@@ -77,7 +77,6 @@ export class FitnessProgramService {
     return [];
   }
 
-
   async participate(trainingProgramId: number) {
     let request = { userId: new Util().getId() };
     const response = await fetch(
@@ -90,5 +89,17 @@ export class FitnessProgramService {
         },
       }
     );
+  }
+
+  async getAllParticipations(): Promise<any[]> {
+    const response = await fetch(
+      this.baseUrl + '/participate/' + new Util().getId(),
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    return response.json();
   }
 }
