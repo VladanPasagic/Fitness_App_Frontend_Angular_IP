@@ -31,6 +31,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './journal-form.component.css',
 })
 export class JournalFormComponent {
+  public selected = 0;
+
   public form: FormGroup;
 
   constructor(
@@ -42,13 +44,15 @@ export class JournalFormComponent {
       duration: [null, Validators.required],
       intensity: [null, Validators.required],
       result: [null, Validators.required],
+      kg: [null, Validators.required],
     });
   }
 
   public async onSubmit() {
-    await this.journalService.saveJournalEntry(this.form.value);
-    this.form.markAsPristine();
-    this.form.markAllAsTouched();
-    this.form.updateValueAndValidity();
+    if (this.selected === 0) {
+      await this.journalService.saveJournalEntry(this.form.value);
+    } else {
+      await this.journalService.saveKgEntry(this.form.value);
+    }
   }
 }

@@ -1,5 +1,12 @@
 <mat-card class="container">
+  <mat-form-field>
+    <mat-select [(value)]="selected">
+      <mat-option [value]="0">Training type </mat-option>
+      <mat-option [value]="1">Kg type</mat-option>
+    </mat-select>
+  </mat-form-field>
   <form [formGroup]="form">
+    @if (selected===0) {
     <mat-form-field>
       <mat-label>Enter type:</mat-label>
       <input matInput formControlName="type" type="text" required="required" />
@@ -33,6 +40,18 @@
         formControlName="result"
       />
     </mat-form-field>
+    } @else if (selected===1) {
+    <mat-form-field>
+      <mat-label>Enter kg:</mat-label>
+      <input
+        matInput
+        required="required"
+        formControlName="kg"
+        type="number"
+        step="0.01"
+      />
+    </mat-form-field>
+    }
     <div class="button-cont">
       <button class="button-cont border" mat-button (click)="onSubmit()">
         Submit

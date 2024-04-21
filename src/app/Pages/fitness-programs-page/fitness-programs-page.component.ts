@@ -47,7 +47,7 @@ export class FitnessProgramsPageComponent implements OnInit {
       result = await this.fitnessProgramService.getAll(page, limit);
     } else {
       const userId = new Util().getId();
-      const result = await this.fitnessProgramService.getAllByCreatorId(
+      result = await this.fitnessProgramService.getAllByCreatorId(
         page,
         limit,
         userId
