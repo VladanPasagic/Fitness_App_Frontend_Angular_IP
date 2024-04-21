@@ -20,7 +20,7 @@
     <img [src]="fitnessProgram.image" alt="Program image" />
     @if (fitnessProgram.creator.id === loggedInUserId) {
     <button mat-button (click)="onDelete()">Delete</button>
-    } @if (loggedInUserId) {
+    } @if (loggedInUserId && fitnessProgram.creator.id !== loggedInUserId) {
     <button mat-button (click)="onParticipateShown()">Participate</button>
     }
   </mat-card>

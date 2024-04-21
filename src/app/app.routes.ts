@@ -26,7 +26,7 @@ export const routes: Routes = [
     component: LoginPageComponent,
   },
   {
-    path: 'verify',
+    path: 'verify/:id',
     component: VerificationPageComponent,
   },
   {
