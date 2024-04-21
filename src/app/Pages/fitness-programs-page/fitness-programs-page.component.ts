@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { FitnessProgram } from '../../Types/fitness-program';
 import { FitnessProgramComponent } from '../../Components/fitness-program/fitness-program.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -24,6 +24,7 @@ export class FitnessProgramsPageComponent implements OnInit {
   public total!: number;
   public loggedIn!: boolean;
   public items!: FitnessProgram[];
+  public currentPage: number = 0;
 
   constructor(
     private fitnessProgramService: FitnessProgramService,
@@ -32,13 +33,29 @@ export class FitnessProgramsPageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.loggedIn = new Util().isLoggedIn();
+    this.findData(0, 5);
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.findData(event.pageIndex, event.pageSize);
+  }
+
+  private async findData(page: number, limit: number) {
+    this.loggedIn = new Util().isLoggedIn();
+    let result;
     if (this.router.url !== '/fitness-program/my') {
-      this.items = await this.fitnessProgramService.getAll();
-      this.items.map((i) => (i.image = new Util().getImageLink(i.image)));
+      result = await this.fitnessProgramService.getAll(page, limit);
     } else {
       const userId = new Util().getId();
-      this.items = await this.fitnessProgramService.getAllByCreatorId(userId);
-      this.items.map((i) => (i.image = new Util().getImageLink(i.image)));
+      const result = await this.fitnessProgramService.getAllByCreatorId(
+        page,
+        limit,
+        userId
+      );
     }
+    this.items = result.content;
+    this.items.map((i) => (i.image = new Util().getImageLink(i.image)));
+    this.total = result.totalElements;
+    this.currentPage = result.pageable.pageNumber;
   }
 }

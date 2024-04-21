@@ -26,11 +26,14 @@ export class NavigationBarComponent implements OnInit {
   }
 
   private updateNavItems() {
+    this.navItems.push(new NavigationItem('Home', '/'));
     !this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Login', '/login'));
     !this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Register', '/register'));
-    this.navItems.push(new NavigationItem('Fitness plans', '/fitness-program/all'));
+    this.navItems.push(
+      new NavigationItem('Fitness plans', '/fitness-program/all')
+    );
     this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Profile', '/profile'));
     this.isLoggedIn &&

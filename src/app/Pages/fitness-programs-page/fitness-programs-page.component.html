@@ -6,5 +6,12 @@
   <app-fitness-program [item]="item"></app-fitness-program>
   }
 </div>
-<mat-paginator [length]="{total}"></mat-paginator>
+<mat-paginator
+  [length]="total"
+  [pageIndex]="currentPage"
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page"
+  (page)="handlePageEvent($event)"
+></mat-paginator>
 <router-outlet></router-outlet>

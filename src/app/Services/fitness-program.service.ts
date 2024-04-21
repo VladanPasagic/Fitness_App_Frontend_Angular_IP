@@ -22,8 +22,8 @@ export class FitnessProgramService {
     }
   }
 
-  async getAll(): Promise<FitnessProgram[]> {
-    const response = await fetch(this.baseUrl, {
+  async getAll(page:number, limit:number): Promise<any> {
+    const response = await fetch(this.baseUrl + `?page=${page}&size=${limit}`, {
       headers: { 'Content-Type': 'application/json' },
     });
     return response.json();
@@ -65,12 +65,19 @@ export class FitnessProgramService {
     }
   }
 
-  async getAllByCreatorId(userId: number): Promise<FitnessProgram[]> {
-    const response = await fetch(this.baseUrl + '/creator/' + userId, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  async getAllByCreatorId(
+    page: number,
+    limit: number,
+    userId: number
+  ): Promise<any> {
+    const response = await fetch(
+      this.baseUrl + '/creator/' + userId + `?page=${page}&size=${limit}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     if (response.ok) {
       return response.json();
     }
