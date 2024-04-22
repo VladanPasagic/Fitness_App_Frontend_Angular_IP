@@ -27,7 +27,6 @@ export class JournalComponent implements OnInit {
     let result = await this.journalService.getAllJournalEntries();
     this.dataSource = result;
     this.dataSource.map((entry) => {
-      console.log(entry);
       this.data.push(entry.result);
       this.labels.push(entry.date);
     });

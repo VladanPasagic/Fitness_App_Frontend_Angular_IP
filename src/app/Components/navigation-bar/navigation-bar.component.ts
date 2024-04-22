@@ -40,6 +40,7 @@ export class NavigationBarComponent implements OnInit {
       this.navItems.push(new NavigationItem('Journal', '/journal'));
     this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Exercise', '/exercises'));
+    this.isLoggedIn && this.navItems.push(new NavigationItem('Chat', '/chat'));
     this.isLoggedIn &&
       this.navItems.push(new NavigationItem('Get advice', '/advice'));
     this.isLoggedIn &&

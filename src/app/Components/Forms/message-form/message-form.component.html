@@ -1,0 +1,14 @@
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Message</mat-label>
+      <input
+        matInput
+        required="required"
+        type="text"
+        formControlName="message"
+      />
+    </mat-form-field>
+    <button mat-button (click)="sendMessage()">Send</button>
+  </form>
+</mat-card>

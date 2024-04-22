@@ -15,6 +15,7 @@ import { FitnessProgramNavigationComponent } from './Components/fitness-program-
 import { ParticipationPageComponent } from './Pages/participation-page/participation-page.component';
 import { VerificationPageComponent } from './Pages/verification-page/verification-page.component';
 import { JournalFormComponent } from './Components/Forms/journal-form/journal-form.component';
+import { ChatPageComponent } from './Pages/chat-page/chat-page.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,11 @@ export const routes: Routes = [
     path: 'advice',
     component: AdvicePageComponent,
     canActivate: [guard],
+  },
+  {
+    path:"chat",
+    component:ChatPageComponent,
+    canActivate:[guard],
   },
   {
     path: 'journal',

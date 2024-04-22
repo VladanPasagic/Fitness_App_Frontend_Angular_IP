@@ -25,6 +25,5 @@ export class KgLossComponent implements OnInit {
         this.labels.push(entry.date);
       }
     )
-    console.log('Data for chart: ',this.data);
   }
 }

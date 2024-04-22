@@ -1,0 +1,6 @@
+<div class="message-container">
+  @for (message of messages; track message.id) {
+  <app-message [message]="message"></app-message>
+  }
+  <app-message-form [participantId]="participant"></app-message-form>
+</div>
