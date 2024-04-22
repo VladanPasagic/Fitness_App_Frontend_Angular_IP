@@ -57,14 +57,24 @@ export class FitnessProgramPageComponent implements OnInit {
     this.fitnessProgram.image = new Util().getImageLink(
       this.fitnessProgram.image
     );
-    this.comments = await this.commentService.getAll(this.fitnessProgram.id);
+    this.getComments();
+    this.commentService.isCommentSent().subscribe((commentSent) => {
+      this.getComments();
+    });
+  }
+
+  private async getComments() {
+    this.comments = await this.commentService.getAll(this.fitnessProgram!.id);
   }
 
   onParticipateShown() {
     this.participationShown = true;
   }
 
-  async onDelete() {}
+  async onDelete() {
+    await this.fitnessProgramService.delete(this.id);
+    this.router.navigate(['../fitness-program/all']);
+  }
 
   async onParticipate() {
     await this.fitnessProgramService.participate(this.id);

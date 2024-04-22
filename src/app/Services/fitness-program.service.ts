@@ -22,7 +22,7 @@ export class FitnessProgramService {
     }
   }
 
-  async getAll(page:number, limit:number): Promise<any> {
+  async getAll(page: number, limit: number): Promise<any> {
     const response = await fetch(this.baseUrl + `?page=${page}&size=${limit}`, {
       headers: { 'Content-Type': 'application/json' },
     });
@@ -108,5 +108,14 @@ export class FitnessProgramService {
       }
     );
     return response.json();
+  }
+
+  async delete(id: number): Promise<void> {
+    const response = await fetch(this.baseUrl + `/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 }

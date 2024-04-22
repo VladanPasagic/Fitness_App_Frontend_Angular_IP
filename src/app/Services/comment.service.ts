@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Configuration } from '../Configuration/configuration';
 import { Comment } from '../Types/comment';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommentService {
   private baseUrl = new Configuration().backendUrl + '/training-programs';
+  private commentSent = new BehaviorSubject<boolean>(false);
   constructor() {}
 
   public async sendComment(fitnessProgramId: number, message: string) {
@@ -20,6 +22,7 @@ export class CommentService {
         },
       }
     );
+    this.commentSent.next(!this.commentSent);
   }
 
   public async getAll(id: number): Promise<Comment[]> {
@@ -29,5 +32,9 @@ export class CommentService {
       },
     });
     return await response.json();
+  }
+
+  isCommentSent(): Observable<boolean> {
+    return this.commentSent.asObservable();
   }
 }
