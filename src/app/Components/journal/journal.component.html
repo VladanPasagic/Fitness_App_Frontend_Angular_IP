@@ -25,5 +25,13 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<app-line-chart label="Type label" [data]="data" [labels]="labels"></app-line-chart>
+<app-line-chart
+  label="Type label"
+  [data]="data"
+  [labels]="labels"
+></app-line-chart>
+} @else {
+<div class="container">
+  <h1>Nothing to display</h1>
+</div>
 }

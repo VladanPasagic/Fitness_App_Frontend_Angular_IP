@@ -1,11 +1,13 @@
-<mat-form-field>
-  <mat-label>Select chatter</mat-label>
-  <mat-select [(value)]="selected">
-    @for (user of users; track user.id) {
-    <mat-option [value]="user.id">{{ user.username }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+<div class="container">
+  <mat-form-field>
+    <mat-label>Select chatter</mat-label>
+    <mat-select [(value)]="selected">
+      @for (user of users; track user.id) {
+      <mat-option [value]="user.id">{{ user.username }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
 
 @if (selected!==-1) {
 <app-chat [participant]="selected"></app-chat>

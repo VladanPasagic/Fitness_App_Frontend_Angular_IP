@@ -1,12 +1,14 @@
-<button mat-button routerLink="add">Create</button>
-<button mat-button (click)="onPrint()">Print</button>
-<mat-form-field>
-  <mat-label>Select type</mat-label>
-  <mat-select [(value)]="selected">
-    <mat-option [value]="0">Training type</mat-option>
-    <mat-option [value]="1">Kg type</mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="container">
+  <button mat-button routerLink="add">Create</button>
+  <button mat-button (click)="onPrint()">Print</button>
+  <mat-form-field>
+    <mat-label>Select type</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option [value]="0">Training type</mat-option>
+      <mat-option [value]="1">Kg type</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 @if (selected===0) {
 <app-journal></app-journal>
 } @else if (selected===1) {
