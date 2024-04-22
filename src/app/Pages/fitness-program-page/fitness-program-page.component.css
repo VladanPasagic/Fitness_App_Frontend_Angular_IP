@@ -64,3 +64,11 @@
   display: flex;
   justify-content: center;
 }
+
+.payment
+{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 350px;
+}

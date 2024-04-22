@@ -1,6 +1,6 @@
 <mat-card class="container">
   <form [formGroup]="form">
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Comment</mat-label>
       <textarea
         matInput
@@ -10,7 +10,7 @@
       ></textarea>
     </mat-form-field>
     <div class="button-cont">
-      <button mat-button (click)="onSubmit()" [disabled]="form.invalid">
+      <button mat-button class="button-cont border" (click)="onSubmit()" [disabled]="form.invalid">
         Send
       </button>
     </div>

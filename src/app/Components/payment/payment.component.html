@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="container">
   <form [formGroup]="form">
     <mat-form-field>
       <mat-label>Select payment option</mat-label>
@@ -11,7 +11,7 @@
         <mat-option [value]="2">Paypal</mat-option>
       </mat-select>
     </mat-form-field>
-
+    <br>
     @if (paypalSelected) {
     <mat-form-field>
       <mat-label>Enter email</mat-label>

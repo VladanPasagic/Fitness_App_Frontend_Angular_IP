@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { JournalService } from '../../../Services/journal.service';
 import { MatSelectModule } from '@angular/material/select';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-journal-form',
@@ -37,7 +37,8 @@ export class JournalFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private journalService: JournalService
+    private journalService: JournalService,
+    private router: Router
   ) {
     this.form = formBuilder.group({
       type: [null, Validators.required],
@@ -54,5 +55,6 @@ export class JournalFormComponent {
     } else {
       await this.journalService.saveKgEntry(this.form.value);
     }
+    this.router.navigate(['./journal']);
   }
 }

@@ -1,28 +1,21 @@
 .container {
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-  
-  .half {
-    margin: 20px;
-  }
-  
-  .button-cont {
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-  }
-  
-  .border
-  {
-    border: 1px solid black;
-  }
-  
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-cont {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.form-field
+{
+  margin-top: 20px;
+}
