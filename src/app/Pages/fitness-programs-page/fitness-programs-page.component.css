@@ -3,3 +3,9 @@
   flex-wrap: wrap;
   margin: 10px;
 }
+
+.button-cont
+{
+  display: flex;
+  justify-content: center;
+}

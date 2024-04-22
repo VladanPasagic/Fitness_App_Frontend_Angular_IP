@@ -1,5 +1,7 @@
 @if (loggedIn) {
-<button mat-button routerLink="../add">Create</button>
+<div class="button-cont">
+  <button mat-button routerLink="../add">Create</button>
+</div>
 }
 <div class="container">
   @for (item of items; track item.id) {

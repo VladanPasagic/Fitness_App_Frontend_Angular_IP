@@ -51,7 +51,7 @@ export class FitnessProgramPageComponent implements OnInit {
     });
     this.fitnessProgram = await this.fitnessProgramService.getById(this.id);
     if (this.fitnessProgram == undefined) {
-      this.router.navigate(['../fitness-program']);
+      this.router.navigate(['../fitness-program/all']);
       return;
     }
     this.fitnessProgram.image = new Util().getImageLink(

@@ -71,8 +71,4 @@ export class UserProfileFormComponent implements OnInit {
     this.form.get('lastName')!.setValue(this.user!.lastName);
     this.form.get('city')!.setValue(this.user!.city);
   }
-
-  public onChangePassword() {
-    // open password modal
-  }
 }
