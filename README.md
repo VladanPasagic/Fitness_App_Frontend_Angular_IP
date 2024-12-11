@@ -1,27 +1,34 @@
-# IpFrontend
+# Angular Application (Frontend)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
+## **Overview**
+The **Angular Application** serves as the user-facing frontend for the fitness platform. It enables users to browse fitness programs, track their activity, and interact with other users and administrators.
 
-## Development server
+### **Features**
+1. **Program Browsing and Filtering**:
+   - Users can search for fitness programs based on criteria like category, price, and difficulty level.
+   - Programs are displayed as cards with basic details (name, image, price).
+   - Clicking a card displays more detailed information, including program description and instructor info.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. **User Registration and Authentication**:
+   - New users can register and receive an activation email with a registration confirmation link.
+   - Users can log in using username and password, along with two-factor authentication via email.
+   - The application supports both regular login and OAuth2 login (e.g., via Google or GitHub).
 
-## Code scaffolding
+3. **Activity Tracking**:
+   - Users can log their workout activities, including type, duration, and intensity.
+   - The system generates graphical progress reports (e.g., weight loss over time) and allows users to export this data as a PDF.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. **Exercise Suggestions**:
+   - The frontend consumes an API to show daily exercise suggestions, including detailed instructions and difficulty levels.
 
-## Build
+5. **News Feed**:
+   - The app displays an RSS feed from **AceFitFacts** to show the latest fitness-related news.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+6. **User-to-User Messaging**:
+   - Registered users can send messages to each other and to fitness advisors for program recommendations.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### **Implementation Details**
+- The frontend is built using **Angular**, following modern web development practices for responsive design.
+- Use **Bootstrap** or **Material UI** for the user interface components.
+- Communicate with the backend via RESTful APIs for authentication, program details, and activity tracking.
+- Implement client-side form validation and display appropriate error messages for invalid inputs.
